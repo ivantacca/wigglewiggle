@@ -16,7 +16,7 @@ ffmpeg()
             x: '(in_w-ow)/2',
             y: 0,
          },
-     },
+      },
    ])
    .input('./test/images/%d.jpg')
    .withFpsInput(4)
