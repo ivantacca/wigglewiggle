@@ -1,5 +1,4 @@
 console.log('TODO: MAKE MODULE + CLI')
-console.log(process.argv)
 
 
 /*
