@@ -19,5 +19,8 @@
     "fluent-ffmpeg": "^2.1.2",
     "rollup": "^3.20.2",
     "rollup-plugin-copy": "^3.4.0"
+  },
+  "bin": {
+    "wiggle": "./bin/index.js"
   }
 }
