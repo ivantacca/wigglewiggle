@@ -1,6 +1,6 @@
-import { path as ffmpegPath } from '@ffmpeg-installer/ffmpeg';
-import { path as ffprobePath } from '@ffprobe-installer/ffprobe';
-import ffmpeg from 'fluent-ffmpeg';
+const {path :ffmpegPath} = require('@ffmpeg-installer/ffmpeg')
+const {path: ffprobePath} = require('@ffprobe-installer/ffprobe')
+const ffmpeg = require('fluent-ffmpeg')
 
 // set paths
 ffmpeg.setFfmpegPath(ffmpegPath);

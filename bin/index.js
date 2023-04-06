@@ -1,32 +1,36 @@
 #! /usr/bin/env node
 
-console.log(process.argv)
+const {generate} = require('../src');
 
 // Add bin to module build
 // https://www.npmjs.com/package/rollup-plugin-bin
 
-// const Resolver = {
-    // install: require('./actions/install.js'),
-    // list: require('./actions/list.js'),
-    // diff: require('./actions/diff.js'),
-    // push: require('./actions/push.js'),
-    // sync: require('./actions/sync.js'),
-// }
+// wigglewiggle make ./path/to/folder/with/1_and_2_jpg/
+// wigglewiggle make --all ./path/to/folder/with/subfolders/with/1_and_2_jpg/
 
-// let argv = process.argv.slice(3)
-// const action = process.argv[2]
+// --all means subfolders
 
-// let charms = new Array();
 
-// argv.map((slice,index) => {
-//   if(slice[0] == '-')
-//     charms.push({
-//       charm: slice.slice(1),
-//       index
-//     })
-// })
+// flags
+// specify input image extension
 
-// remove charm from argv
-// argv = argv.filter(slice => slice[0] != '-')
 
-// Resolver[action](argv, charms)
+const Resolver = {
+    make: generate,
+}
+
+let argv = process.argv.slice(2)
+let [action, path, flag] = argv
+
+
+if(flag === "--all"){
+    // import { readdir } from 'fs/promises'
+
+    // const getDirectories = async source =>
+    //   (await readdir(source, { withFileTypes: true }))
+    //     .filter(dirent => dirent.isDirectory())
+    //     .map(dirent => dirent.name)
+} else {
+    Resolver[action](path)
+}
+
