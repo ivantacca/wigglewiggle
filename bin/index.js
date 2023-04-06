@@ -1,36 +1,21 @@
 #! /usr/bin/env node
 
-const {generate} = require('../src');
-
-// Add bin to module build
-// https://www.npmjs.com/package/rollup-plugin-bin
-
-// wigglewiggle make ./path/to/folder/with/1_and_2_jpg/
-// wigglewiggle make --all ./path/to/folder/with/subfolders/with/1_and_2_jpg/
-
-// --all means subfolders
-
-
-// flags
-// specify input image extension
-
+const { generate } = require('../src');
+const { getDirectories } = require('../src/utils')
+const path = require('path');
 
 const Resolver = {
     make: generate,
 }
 
 let argv = process.argv.slice(2)
-let [action, path, flag] = argv
+let [action, dir, flag] = argv
 
 
-if(flag === "--all"){
-    // import { readdir } from 'fs/promises'
-
-    // const getDirectories = async source =>
-    //   (await readdir(source, { withFileTypes: true }))
-    //     .filter(dirent => dirent.isDirectory())
-    //     .map(dirent => dirent.name)
+if (flag === "--all") {
+    getDirectories(dir)
+        .then(paths => paths.map(p => Resolver[action](path.join(dir, p))))
 } else {
-    Resolver[action](path)
+    Resolver[action](dir)
 }
 
