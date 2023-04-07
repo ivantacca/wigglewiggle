@@ -12,7 +12,7 @@ const Resolver = {
 let argv = process.argv.slice(2)
 let [action, dir, flag] = argv
 
-if(action && Resolver.action){
+if(action && Resolver[action]){
     if (flag === "--all") {
         getDirectories(dir)
             .then(paths => paths.map(p => Resolver[action](path.join(dir, p))))
