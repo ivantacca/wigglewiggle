@@ -1,6 +1,7 @@
 const { path: ffmpegPath } = require('@ffmpeg-installer/ffmpeg')
 const { path: ffprobePath } = require('@ffprobe-installer/ffprobe')
 const ffmpeg = require('fluent-ffmpeg')
+const { logger } = require('./logger')
 
 // set paths
 ffmpeg.setFfmpegPath(ffmpegPath);
@@ -9,6 +10,8 @@ ffmpeg.setFfprobePath(ffprobePath);
 
 module.exports = {
     generate: (path) => {
+        logger('GENERATE', path)
+
         const images = path + '/%d.jpg';
         const output = path + '/foldername.mp4'
         ffmpeg()
@@ -29,6 +32,8 @@ module.exports = {
             .outputOptions('-pix_fmt yuv420p')
             .output(output)
             .run();
+        logger('GENERATE_SUCCESS', path)
+
     }
 }
 
