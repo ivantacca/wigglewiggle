@@ -10,12 +10,12 @@ ffmpeg.setFfprobePath(ffprobePath);
 
 
 module.exports = {
-    generate: (dir) => {
+    generate: (dir, outDir) => {
         logger('GENERATE', {dir})
 
         const images = path.join(dir,'%d.jpg')
         const filename = `${path.parse(dir).base}.mp4`
-        const output = path.join(dir, filename)
+        const output = path.join((outDir || dir), filename)
 
         ffmpeg()
             .videoFilter([

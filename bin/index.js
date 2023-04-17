@@ -10,12 +10,12 @@ const Resolver = {
 }
 
 let argv = process.argv.slice(2)
-let [action, dir, flag] = argv
+let [action, dir, all, root] = argv
 
 if(action && Resolver[action]){
-    if (flag === "--all") {
+    if (all === "--all") {
         getDirectories(dir)
-            .then(paths => paths.map(p => Resolver[action](path.join(dir, p))))
+            .then(paths => paths.map(p => Resolver[action](path.join(dir, p), root === '--root' ? dir : null)))
     } else {
         Resolver[action](dir)
     }
