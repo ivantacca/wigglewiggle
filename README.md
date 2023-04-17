@@ -16,3 +16,7 @@ Or with multiple directories
 ```
 wiggle make ./path/to/folder/with/subfolders/with/1_and_2_jpg/ --all
 ```
+Set root directory as output
+```
+wiggle make ./path/to/folder/with/subfolders/with/1_and_2_jpg/ --all --root
+```

@@ -13,9 +13,11 @@ const actions = {
     ${colors.FgGreen}actions${colors.Reset}
     - wiggle make ./path/to/folder/with/1_and_2_jpg/
     - wiggle make ./path/to/folder/with/subfolders/with/1_and_2_jpg/ --all
+    - wiggle make ./path/to/folder/with/subfolders/with/1_and_2_jpg/ --all --root
         
     ${colors.FgMagenta}flags${colors.Reset}
     ${colors.FgGray}--all${colors.Reset} — include all subfolders
+    ${colors.FgGray}--root${colors.Reset} — set root directory as output
     `
 }
 
